@@ -1,8 +1,6 @@
 package classes;
 
-import java.awt.ComponentOrientation;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -15,13 +13,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 
 public class GetStillsFromUrls {
@@ -34,15 +31,14 @@ public class GetStillsFromUrls {
 		String folder = "";
 		String input = "";
 		
-		System.out.println("High resolution images will be saved in: " + downloadLoc);
 		while(loop){
 			downloadLoc = System.getProperty("user.home") + File.separator + "Downloads";
 			
 			url = (String) JOptionPane.showInputDialog(null, "Enter the URL from an IMDB image result page:",
 					"Provide URL", JOptionPane.PLAIN_MESSAGE, null, null, null);
-			while(url == null || url.equals("")){
-				url = (String) JOptionPane.showInputDialog(null, "Invalid URL. Enter a valid URL from an IMDB image result page:",
-						"Provide URL", JOptionPane.PLAIN_MESSAGE, null, null, null);
+			
+			if(url == null || url.equals("")){
+				System.exit(0);
 			}
 			
 			folder = (String) JOptionPane.showInputDialog(null, "Enter a new folder name to download to (default is 'IMDB'):",
@@ -60,7 +56,6 @@ public class GetStillsFromUrls {
 			downloadURLS = parseHTML(url);
 			
 			downloadStills(downloadURLS, downloadLoc);
-			System.out.println("Finished.");
 			
 			input = (String) JOptionPane.showInputDialog(null, "Enter another URL (Y/N)?",
 					"New Download?", JOptionPane.PLAIN_MESSAGE, null, null, null);
@@ -153,20 +148,36 @@ public class GetStillsFromUrls {
 	}
 	public static void downloadStills(List<FileURL> downloadURLS, String downloadLoc){
 		JFrame frame = new JFrame("Downloading Images...");
-		frame.setPreferredSize(new Dimension(210,80));
-		frame.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		frame.setPreferredSize(new Dimension(300,120));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel label = new JLabel();
-		label.setPreferredSize(new Dimension(200,40));
-		label.setHorizontalAlignment(JLabel.CENTER);
-		frame.add(label);
+		JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
+		JLabel label2 = new JLabel();
+		label2.setPreferredSize(new Dimension(250,40));
+		label2.setHorizontalAlignment(JLabel.CENTER);
+		label2.setText("High resolution images will be saved in:");
+		panel.add(label2);
+		
+		JLabel label3 = new JLabel();
+		label3.setPreferredSize(new Dimension(250,40));
+		label3.setHorizontalAlignment(JLabel.CENTER);
+		label3.setText(downloadLoc);
+		panel.add(label3);
+		
+		JLabel label1 = new JLabel();
+		label1.setPreferredSize(new Dimension(200,40));
+		label1.setHorizontalAlignment(JLabel.CENTER);
+		panel.add(label1);
+		
+		frame.add(panel);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		
 		for(FileURL downloadURL : downloadURLS){
-			label.setText("Saving image " + (downloadURLS.indexOf(downloadURL)+1) + " out of " + downloadURLS.size());
+			label1.setText("Saving image " + (downloadURLS.indexOf(downloadURL)+1) + " out of " + downloadURLS.size());
 			try {
 				URL url = new URL(downloadURL.getUrl());
 				InputStream in = url.openStream();

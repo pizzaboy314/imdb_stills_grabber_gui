@@ -61,6 +61,7 @@ public class GetStillsFromUrls {
 					"New Download?", JOptionPane.PLAIN_MESSAGE, null, null, null);
 			if(input == null || input.equals("") || input.toUpperCase().equals("N")){
 				loop = false;
+				System.exit(0);
 			}
 		}
 	}

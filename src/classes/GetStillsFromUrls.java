@@ -113,10 +113,12 @@ public class GetStillsFromUrls {
 				BufferedReader in = new BufferedReader(new InputStreamReader(source.openStream()));
 				
 				String inputLine = in.readLine();
+				String prevLine = null;
 				while (inputLine != null){
 					if(inputLine.contains("class=\"prevnext\"") && inputLine.contains("Next")){
-						String tmp = inputLine.replaceAll("<a href=\"", "");
-						tmp = tmp.replaceAll("\" class=\"prevnext\" >Next&nbsp;&raquo;</a>", "");
+						String tmp = prevLine + inputLine;
+						tmp = tmp.replaceAll("<a href=\"", "");
+						tmp = tmp.replaceAll("\"class=\"prevnext\" >Next&nbsp;&raquo;</a>", "");
 						nextURL = "http://www.imdb.com" + tmp.trim();
 					}
 					if(inputLine.contains("media_index_thumbnail_grid")){
@@ -132,6 +134,7 @@ public class GetStillsFromUrls {
 						grabJPG = false;
 						inputLine = null;
 					} else {
+						prevLine = inputLine;
 						inputLine = in.readLine();
 					}
 				}

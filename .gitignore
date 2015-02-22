@@ -3,5 +3,6 @@ bin/
 
 *.txt
 *.xml
+*.lnk
 .classpath
 .project

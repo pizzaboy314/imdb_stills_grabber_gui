@@ -8,13 +8,10 @@ After all the URLs have been fetched, the program downloads each image.
 
 **GUI version (Executable JAR):**   
 Java source code and Eclipse project: [Github Repo](https://github.com/pizzaboy314/imdb_stills_grabber_gui)   
-JAR file: attached (note: requres Java Runtime: [JRE](https://www.java.com/en/download/))   
+JAR file: [link](https://github.com/pizzaboy314/imdb_stills_grabber_gui/blob/master/HD_IMDB_Image_Downloader.jar?raw=true) (note: requres Java Runtime: [JRE](https://www.java.com/en/download/))   
 
 **Command line version:**   
 Java source code and Eclipse project: [Github Repo](https://github.com/pizzaboy314/imdb_stills_grabber)   
-
-
-To run...
-
+To run...   
 **Windows:** Run the .bat file in the "final" directory. You can also make a shortcut to the .bat file and add the icon in the src directory.   
 **Linux/Mac:** Open terminal and cd to the "final" directory. Run command -> java GetStillsFromUrls

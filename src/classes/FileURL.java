@@ -6,7 +6,7 @@ public class FileURL {
 	
 	public FileURL(String url){
 		this.url = url;
-		this.filename = url.replaceAll("http://ia.media-imdb.com/images/M/", "");
+		this.filename = url.substring(url.indexOf("images/M/")+9);
 	}
 	
 	public String getUrl() {

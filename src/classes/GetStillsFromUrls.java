@@ -119,7 +119,7 @@ public class GetStillsFromUrls {
 						String tmp = prevLine + inputLine;
 						tmp = tmp.replaceAll("<a href=\"", "");
 						tmp = tmp.replaceAll("\"class=\"prevnext\" >Next&nbsp;&raquo;</a>", "");
-						nextURL = "http://www.imdb.com" + tmp.trim();
+						nextURL = "https://www.imdb.com" + tmp.trim();
 					}
 					if(inputLine.contains("media_index_thumbnail_grid")){
 						grabJPG = true;

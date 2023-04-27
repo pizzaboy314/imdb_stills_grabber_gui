@@ -2,8 +2,8 @@ Command-line/GUI prompt for a URL of a IMDb image results page and (optional) a 
 ---
 
 An IMDb image results page looks like [this](http://www.imdb.com/title/tt1951264/mediaindex?refine=still_frame&ref_=ttmi_ref_sf).   
-For each thumbnail in each page of results, the program gets the image's link, like [this](http://ia.media-imdb.com/images/M/MV5BNzQ5OTU5MTI4Ml5BMl5BanBnXkFtZTgwMjA3NzY2MDE@._V1_SY100_CR25,0,100,100_.jpg).   
-Then fixes that URL so that it has the correct URL to the full-size image, like [this](http://ia.media-imdb.com/images/M/MV5BNzQ5OTU5MTI4Ml5BMl5BanBnXkFtZTgwMjA3NzY2MDE@._V1_.jpg).   
+For each thumbnail in each page of results, the program gets the image's link, like [this](https://m.media-amazon.com/images/M/MV5BMTQ5NjYyOTY3N15BMl5BanBnXkFtZTgwMzE3NzY2MDE@._V1_UY100_CR25,0,100,100_AL_.jpg).   
+Then fixes that URL so that it has the correct URL to the full-size image, like [this](https://m.media-amazon.com/images/M/MV5BMTQ5NjYyOTY3N15BMl5BanBnXkFtZTgwMzE3NzY2MDE@._V1_.jpg).   
 After all the URLs have been fetched, the program downloads each image.   
 
 **GUI version (Executable JAR):**   
